@@ -40,9 +40,8 @@ import glob
 from subprocess import call
 from time import sleep
 
-#set raw video (source) and output folder (target) paths
-source_path = ''
-target_path = ''
+source_path = "xxx" #set path of folder with raw video files (h264)
+target_path = "xxx" #set path of folder to save converted video files (mp4)
 
 videos = glob.glob(source_path + "*.h264")
 counter = 1
@@ -55,9 +54,80 @@ for video in videos:
 	source_name = source_path + base_name + ".h264"
 	target_name = target_path + base_name + ".mp4"
 	call(f"MP4Box -add '{source_name}' '{target_name}'",shell = True)
-	#print(f"MP4Box -add {source_name} {target_name}")
 	print("\t-> conversion complete!")
 	sleep(1)
+```
+
+### Cutting video recordings into 6-second-long snips based on the infared light barrier registrations
+```ruby
+import numpy as np
+import pandas as pd
+import glob
+from moviepy.video.io.ffmpeg_tools import ffmpeg_extract_subclip
+
+det_path = "xxx" #set path of "Detections.txt" file containing the light barrier registrations
+vid_path = "xxx" #set path of folder with converted video files
+snip_path = "xxx" #setpath of folder to save snips
+
+# load light barrier registrations
+det = pd.read_table(det_path,sep=":| ",engine="python",header=None,names=["direction","date","hour","min","sec"])
+det["sec_mid"] = [row[2] * 3600 + row[3] * 60 + row[4] for index, row in det.iterrows()]
+print("Detections loaded!")
+
+# load converted video data	
+vid = pd.DataFrame({"path":[],"file":[],"date":[],"hour":[],"min":[],"sec":[],"sec_mid":[]})
+videos = glob.glob(vid_path + "*.mp4")
+for video in videos:
+	#file_name = video[37:70]
+	file_name = video.split("/")[-1][0:-4]
+	print(file_name)
+	date = file_name[7:17].split("_")
+	date_re = str(date[2] + "." + date[1] + "." + date[0])
+	time = file_name[18:26].split("_")
+	sec_mid = int(time[0]) * 3600 + int(time[1]) * 60 + int(time[2])
+	vid = vid.append({"path":video,"file":file_name,"date":date_re,"hour":time[0],"min":time[1],"sec":time[2],"sec_mid":sec_mid},ignore_index=True)
+vid["sec_mid"] = vid["sec_mid"].astype(int)
+print("Video information loaded!")
+
+fails = 0
+# loop over light barrier detections and find matching (15 minute long) video file 
+print("Matching detectios with video files")
+for index, row in det.iterrows():
+	fail = False
+	print(f"  -> searching for detection at {row['hour']}:{row['min']}:{row['sec']} on the {row['date']}")
+	target_vid = vid[(vid["date"] == row["date"]) & (vid["sec_mid"] <= row["sec_mid"]) & (vid["sec_mid"] >= row["sec_mid"]-15*60)]
+	print(f"     -> video found: {target_vid['file'].to_string().split()[1]}")
+	print("          -> extracting video snip...")
+	print(target_vid["sec_mid"].values)
+	vid_secmid = (target_vid["sec_mid"].values).tolist()
+	target_file = (target_vid["file"].values).tolist()
+	print(target_file)
+	try:	
+		print(vid_secmid[0])
+		t1 = row["sec_mid"] - vid_secmid[0] - 3
+		t2 = row["sec_mid"] - vid_secmid[0] + 3
+		print(f"{t1} - {t2}")
+		print(target_file[0] + ".mp4")
+		target_file = target_file[0] + ".mp4"
+	except:
+		print("Empty Array")
+	snip_date = "_".join(reversed(row["date"].split(".")))
+	snip_name = "snip_"+snip_date+"_"+str(row["hour"]).zfill(2)+"_"+str(row["min"]).zfill(2)+"_"+str(row["sec"]).zfill(2)+"_"+row["direction"]+".mp4"
+	
+	#try to extract snip from video
+	try:		
+		ffmpeg_extract_subclip(vid_path+target_file,int(t1),int(t2),snip_path+snip_name)
+	# most common cause of failure are detections outside of recording time -> no video for extraction
+	except:
+		fail = True	
+		fails += 1
+	
+	if fail:
+		print("          -> extraction FAILED!")
+	else:
+		print("          -> extraction complete!")
+	
+print(f"Conversion complete ({fails} detections could not be found)")
 ```
 
 
