@@ -47,7 +47,6 @@ videos = glob.glob(source_path + "*.h264")
 counter = 1
 print(videos)
 for video in videos:
-	#base_name = video[37:66]
 	base_name = video.split("/")[-1][0:-5]
 	print(f"Converting {base_name} ({counter}/{len(videos)})")
 	counter += 1
@@ -90,10 +89,10 @@ for video in videos:
 	"min":time[1],"sec":time[2],"sec_mid":sec_mid},ignore_index=True)
 vid["sec_mid"] = vid["sec_mid"].astype(int)
 print("Video information loaded!")
-
 fails = 0
+
 # loop over light barrier detections and find matching (15 minute long) video file 
-print("Matching detectios with video files")
+print("Matching detections with video files")
 for index, row in det.iterrows():
 	fail = False
 	print(f"  -> searching for detection at {row['hour']}:{row['min']}:{row['sec']} 
@@ -108,8 +107,8 @@ for index, row in det.iterrows():
 	print(target_file)
 	try:	
 		print(vid_secmid[0])
-		t1 = row["sec_mid"] - vid_secmid[0] - 3
-		t2 = row["sec_mid"] - vid_secmid[0] + 3
+		t1 = row["sec_mid"] - vid_secmid[0] - 3 #3 second before light barrier registration = start of snip
+		t2 = row["sec_mid"] - vid_secmid[0] + 3 #3 second after light barrier registration = end of snip
 		print(f"{t1} - {t2}")
 		print(target_file[0] + ".mp4")
 		target_file = target_file[0] + ".mp4"
@@ -119,7 +118,7 @@ for index, row in det.iterrows():
 	snip_name = "snip_"+snip_date+"_"+str(row["hour"]).zfill(2)+"_"+str(row["min"]).zfill(2)
 	+"_"+str(row["sec"]).zfill(2)+"_"+row["direction"]+".mp4"
 	
-	#try to extract snip from video
+	#extract 6-second-long snip from video file
 	try:		
 		ffmpeg_extract_subclip(vid_path+target_file,int(t1),int(t2),snip_path+snip_name)
 	# most common cause of failure are detections outside of recording time 
@@ -133,7 +132,7 @@ for index, row in det.iterrows():
 	else:
 		print("          -> extraction complete!")
 	
-print(f"Conversion complete ({fails} detections could not be found)")
+print(f"Conversion completed ({fails} detections could not be found)")
 ```
 
 
