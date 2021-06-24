@@ -57,7 +57,7 @@ for video in videos:
 	sleep(1)
 ```
 
-### Cutting video recordings into 6-second-long snips based on the infared light barrier registrations
+### Creating 6-second-long video snips based on light barrier registrations
 ```python
 import numpy as np
 import pandas as pd
@@ -135,14 +135,3 @@ for index, row in det.iterrows():
 	
 print(f"Conversion completed ({fails} detections could not be found)")
 ```
-
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)```
