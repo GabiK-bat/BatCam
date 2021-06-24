@@ -34,7 +34,32 @@ A step-by-step detailed guide with photos showing the main steps of the building
 
 
 ## Video processing
+### Converting h264 video format into mp4
+`import glob
+from subprocess import call
+from time import sleep
 
+#set raw video (source) and output folder (target) paths
+source_path = ''
+target_path = ''
+
+videos = glob.glob(source_path + "*.h264")
+counter = 1
+
+print(videos)
+
+for video in videos:
+	#base_name = video[37:66]
+	base_name = video.split("/")[-1][0:-5]
+	print(f"Converting {base_name} ({counter}/{len(videos)})")
+	counter += 1
+	source_name = source_path + base_name + ".h264"
+	target_name = target_path + base_name + ".mp4"
+	call(f"MP4Box -add '{source_name}' '{target_name}'",shell = True)
+	#print(f"MP4Box -add {source_name} {target_name}")
+	print("\t-> conversion complete!")
+	sleep(1)
+`
 
 
 - Bulleted
