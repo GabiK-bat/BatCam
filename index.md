@@ -85,7 +85,8 @@ for video in videos:
 	date_re = str(date[2] + "." + date[1] + "." + date[0])
 	time = file_name[18:26].split("_")
 	sec_mid = int(time[0]) * 3600 + int(time[1]) * 60 + int(time[2])
-	vid = vid.append({"path":video,"file":file_name,"date":date_re,"hour":time[0],"min":time[1],"sec":time[2],"sec_mid":sec_mid},ignore_index=True)
+	vid = vid.append({"path":video,"file":file_name,"date":date_re,"hour":time[0],
+	"min":time[1],"sec":time[2],"sec_mid":sec_mid},ignore_index=True)
 vid["sec_mid"] = vid["sec_mid"].astype(int)
 print("Video information loaded!")
 
@@ -112,7 +113,8 @@ for index, row in det.iterrows():
 	except:
 		print("Empty Array")
 	snip_date = "_".join(reversed(row["date"].split(".")))
-	snip_name = "snip_"+snip_date+"_"+str(row["hour"]).zfill(2)+"_"+str(row["min"]).zfill(2)+"_"+str(row["sec"]).zfill(2)+"_"+row["direction"]+".mp4"
+	snip_name = "snip_"+snip_date+"_"+str(row["hour"]).zfill(2)+"_"+str(row["min"]).zfill(2)+"_"
+		    +str(row["sec"]).zfill(2)+"_"+row["direction"]+".mp4"
 	
 	#try to extract snip from video
 	try:		
