@@ -70,7 +70,8 @@ vid_path = "xxx" #set path of folder with converted video files
 snip_path = "xxx" #setpath of folder to save snips
 
 # load light barrier registrations
-det = pd.read_table(det_path,sep=":| ",engine="python",header=None,names=["direction","date","hour","min","sec"])
+det = pd.read_table(det_path,sep=":| ",engine="python",header=None,names=["direction","date","hour",
+"min","sec"])
 det["sec_mid"] = [row[2] * 3600 + row[3] * 60 + row[4] for index, row in det.iterrows()]
 print("Detections loaded!")
 
@@ -95,8 +96,10 @@ fails = 0
 print("Matching detectios with video files")
 for index, row in det.iterrows():
 	fail = False
-	print(f"  -> searching for detection at {row['hour']}:{row['min']}:{row['sec']} on the {row['date']}")
-	target_vid = vid[(vid["date"] == row["date"]) & (vid["sec_mid"] <= row["sec_mid"]) & (vid["sec_mid"] >= row["sec_mid"]-15*60)]
+	print(f"  -> searching for detection at {row['hour']}:{row['min']}:{row['sec']} 
+	on the {row['date']}")
+	target_vid = vid[(vid["date"] == row["date"]) & (vid["sec_mid"] <= row["sec_mid"]) 
+	& (vid["sec_mid"] >= row["sec_mid"]-15*60)]
 	print(f"     -> video found: {target_vid['file'].to_string().split()[1]}")
 	print("          -> extracting video snip...")
 	print(target_vid["sec_mid"].values)
@@ -113,13 +116,14 @@ for index, row in det.iterrows():
 	except:
 		print("Empty Array")
 	snip_date = "_".join(reversed(row["date"].split(".")))
-	snip_name = "snip_"+snip_date+"_"+str(row["hour"]).zfill(2)+"_"+str(row["min"]).zfill(2)+"_"
-		    +str(row["sec"]).zfill(2)+"_"+row["direction"]+".mp4"
+	snip_name = "snip_"+snip_date+"_"+str(row["hour"]).zfill(2)+"_"+str(row["min"]).zfill(2)
+	+"_"+str(row["sec"]).zfill(2)+"_"+row["direction"]+".mp4"
 	
 	#try to extract snip from video
 	try:		
 		ffmpeg_extract_subclip(vid_path+target_file,int(t1),int(t2),snip_path+snip_name)
-	# most common cause of failure are detections outside of recording time -> no video for extraction
+	# most common cause of failure are detections outside of recording time 
+	# no video for extraction
 	except:
 		fail = True	
 		fails += 1
