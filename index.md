@@ -35,7 +35,7 @@ A step-by-step detailed guide with photos showing the main steps of the building
 
 ## Video processing
 ### Converting h264 video format into mp4
-```ruby
+```python
 import glob
 from subprocess import call
 from time import sleep
@@ -59,7 +59,7 @@ for video in videos:
 ```
 
 ### Cutting video recordings into 6-second-long snips based on the infared light barrier registrations
-```ruby
+```python
 import numpy as np
 import pandas as pd
 import glob
