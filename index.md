@@ -35,7 +35,8 @@ A step-by-step detailed guide with photos showing the main steps of the building
 
 ## Video processing
 ### Converting h264 video format into mp4
-`import glob
+```ruby
+import glob
 from subprocess import call
 from time import sleep
 
@@ -45,9 +46,7 @@ target_path = ''
 
 videos = glob.glob(source_path + "*.h264")
 counter = 1
-
 print(videos)
-
 for video in videos:
 	#base_name = video[37:66]
 	base_name = video.split("/")[-1][0:-5]
@@ -59,7 +58,7 @@ for video in videos:
 	#print(f"MP4Box -add {source_name} {target_name}")
 	print("\t-> conversion complete!")
 	sleep(1)
-`
+```
 
 
 - Bulleted
