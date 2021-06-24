@@ -78,7 +78,6 @@ print("Detections loaded!")
 vid = pd.DataFrame({"path":[],"file":[],"date":[],"hour":[],"min":[],"sec":[],"sec_mid":[]})
 videos = glob.glob(vid_path + "*.mp4")
 for video in videos:
-	#file_name = video[37:70]
 	file_name = video.split("/")[-1][0:-4]
 	print(file_name)
 	date = file_name[7:17].split("_")
@@ -107,8 +106,10 @@ for index, row in det.iterrows():
 	print(target_file)
 	try:	
 		print(vid_secmid[0])
-		t1 = row["sec_mid"] - vid_secmid[0] - 3 #3 second before light barrier registration = start of snip
-		t2 = row["sec_mid"] - vid_secmid[0] + 3 #3 second after light barrier registration = end of snip
+		#3 second before light barrier registration = start of snip
+		t1 = row["sec_mid"] - vid_secmid[0] - 3 
+		#3 second after light barrier registration = end of snip
+		t2 = row["sec_mid"] - vid_secmid[0] + 3 
 		print(f"{t1} - {t2}")
 		print(target_file[0] + ".mp4")
 		target_file = target_file[0] + ".mp4"
