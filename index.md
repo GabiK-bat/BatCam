@@ -1,19 +1,28 @@
-## Welcome to GitHub Pages
+# Overview
 
-You can use the [editor on GitHub](https://github.com/GabiK-bat/BatCam/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+*general intro
+*photo in the field
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+## Example
 
-### Markdown
+*video example
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+## Parts list
+*in a table format: name of parts, number of unit, price per unit; video/LB/power/..
 
-```markdown
-Syntax highlighted code block
+## Schematics
+*design + PCB
 
-# Header 1
-## Header 2
-### Header 3
+## Building instructions
+*step-by-step guide with photos for main steps
+
+## Configuration
+
+
+## Video processing
+
+
+
 
 - Bulleted
 - List
