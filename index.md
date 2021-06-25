@@ -9,6 +9,7 @@ This practical guide is a supplementary information of the publication: **title.
 ![image](https://user-images.githubusercontent.com/79314212/123325849-cf6f6100-d538-11eb-9b66-f23d91d5e3c4.png)
 
 ## Example
+The following video of a Greater mouse-eared bat (_Myotis myotis_) entering a hiberncaula was recorded using the BatCam. The short video snip was isolated from a full-night infrared video recording based on the information the light barrier registered and forwarded to the video camera.
 
 {% include googleDrivePlayer.html id=page.driveId %}
 
