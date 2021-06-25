@@ -10,6 +10,7 @@ This practical guide is a supplementary information of the publication: **title.
 
 ## Example
 *video example
+
 {% include googleDrivePlayer.html id=page.driveId %}
 
 ## Parts list
