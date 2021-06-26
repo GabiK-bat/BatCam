@@ -41,6 +41,8 @@ A step-by-step detailed guide with photos showing the main steps of the building
 ## Configuration
 
 ### Scheduled video recording
+This operation mode allows configuring the start and end of recording time. To do so, we have set the time period when we DO NOT want to record, using the "day" variable (e.g. day = ("07:00:00","19:00:00") means no recording from 7AM to 7PM).
+
 ```python
 ###################### Import Libraries #######################
 import sys
@@ -140,9 +142,9 @@ while True:
 
 ## Video processing
 
+### Converting h264 video format into mp4
 The Raspberry Pi can easily record videos with different resolution and frame rate, but it saves recordings as .h264 files, which generally hard to view and work with. Using the following Python code, videos recorded with the BatCam can be converted into a widely applicable .mp4 format.
 
-### Converting h264 video format into mp4
 ```python
 import glob
 from subprocess import call
@@ -165,9 +167,9 @@ for video in videos:
 	sleep(1)
 ```
 
-The following Python code allows post-processing the full-night video recordings, creating short video snips for each bat pass registered by the infared light barrier. The length of the video snips can be set by the user (default=3 seconds before and after registered event) and the file names contain the date and time of the event and the direction of the bat pass (in or out). 
-
 ### Creating 6-second-long video snips based on light barrier registrations
+The following Python code allows post-processing the full-night video recordings, creating short video snips for each bat pass registered by the infared light barrier. The length of the video snips can be set by the user (default=3 seconds before and after registered event) and the file names contain the date and time of the event and the direction of the bat pass (in or out).
+
 ```python
 import numpy as np
 import pandas as pd
