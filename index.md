@@ -18,7 +18,7 @@ The following video of a Greater mouse-eared bat (_Myotis myotis_) entering a hi
 {% include googleDrivePlayer.html id=page.driveId %}
 
 ## Parts list
-*in a table format: name of parts, number of unit, price per unit; video/LB/power/..
+*in a table format: name of parts, number of unit, price per unit; video/LB/power/.
 
 ## Schematics
 An overview of the camera design that is connected to an infrared light barrier:
