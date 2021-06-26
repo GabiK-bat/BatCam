@@ -2,8 +2,6 @@
 driveId: 1eOBq-KuYQPmx111H_NuEgR9xyAI0cyde/preview
 ---
 
-# Overview
-
 **BatCam** is an open-source, low-cost, do-it-yourself infrared video camera built with off-the-shelf components. It was designed for automated monitoring of bat activity and behavior at hibernation and roosting sites equipped with infrared light barriers and camera traps. However, it can be easily adapted to a wide variety of field applications, with particular focus on nocturnal animals. Custom recording schedules can be set by the user and the direct connection to the infrared light barrier allows us to convert the continuous video recordings into short clips of each bat passing through the light barrier. Additionally, any other sensors with analog output can serve as a trigger signal for clipping the full-night video recordings. 
 
 We provide a step-by-step instruction to build, configure and use the camera in the field, along with Python codes for video post-processing, making it accessible to anyone with minimal technical and programming skills. 
@@ -55,7 +53,8 @@ import RPi.GPIO as GPIO
 #returns seconds passed since midnight
 def sinceMidnight():
 	timeNow = datetime.now()
-	timeZero = timeNow.replace(hour=0,minute=0,second=0,microsecond=0)
+	timeZero = timeNow.replace(hour=0,minute=0,second=0,
+	microsecond=0)
 	return (timeNow-timeZero).seconds
 
 #converts time (formatted in hh:mm:ss) into seconds
@@ -78,15 +77,16 @@ pinsOut = (16,32,37)
 #37 LED green
 setGPIO(pinsOut)
 
-# set time for start and end of daytime (it will be NOT RECORDING during that time)
+#set time for start and end of daytime 
+#it will be NOT RECORDING during that time!
 day = ("07:00:00","19:00:00")
 daySec = (toSeconds(day[0]),toSeconds(day[1]))
 
-GPIO.output(37,GPIO.HIGH) #turns green LED shortly on when script starts
+GPIO.output(37,GPIO.HIGH) #turns green-LED shortly on when script starts
 time.sleep(3)
 GPIO.output(37,GPIO.LOW)
 
-GPIO.output((16),GPIO.HIGH) #turns IR light shortly on when script starts
+GPIO.output((16),GPIO.HIGH) #turns IR-light shortly on when script starts
 time.sleep(3)
 GPIO.output((16),GPIO.LOW)
 
@@ -120,7 +120,7 @@ while True:
 		#starts new recording every 15 minutes
 		if not firstRun:
 			currTime = datetime.now()
-		if firstRun or (currTime-nowVideo).total_seconds() > 900:
+		if firstRun or (currTime-nowVideo).total_seconds()>900:
 			if not firstRun and isRecording:
 				print("Stopping video recording")
 				camera.stop_recording()
@@ -151,7 +151,7 @@ from subprocess import call
 from time import sleep
 
 source_path = "xxx" #set path of folder with raw video files (h264)
-target_path = "xxx" #set path of folder to save converted video files (mp4)
+target_path = "xxx" #set path of folder to save converted video files(mp4)
 
 videos = glob.glob(source_path + "*.h264")
 counter = 1
@@ -162,7 +162,7 @@ for video in videos:
 	counter += 1
 	source_name = source_path + base_name + ".h264"
 	target_name = target_path + base_name + ".mp4"
-	call(f"MP4Box -add '{source_name}' '{target_name}'",shell = True)
+	call(f"MP4Box -add '{source_name}' '{target_name}'",shell=True)
 	print("\t-> conversion complete!")
 	sleep(1)
 ```
@@ -176,18 +176,20 @@ import pandas as pd
 import glob
 from moviepy.video.io.ffmpeg_tools import ffmpeg_extract_subclip
 
-det_path = "xxx" #set path of "Detections.txt" file containing the light barrier registrations
+det_path = "xxx" #set path of "Detections.txt" 
+#file containing the light barrier registrations
 vid_path = "xxx" #set path of folder with converted video files
 snip_path = "xxx" #setpath of folder to save snips
 
 # load light barrier registrations
-det = pd.read_table(det_path,sep=":| ",engine="python",header=None,names=["direction","date","hour",
-"min","sec"])
+det = pd.read_table(det_path,sep=":| ",engine="python",header=None,
+names=["direction","date","hour", "min","sec"])
 det["sec_mid"] = [row[2] * 3600 + row[3] * 60 + row[4] for index, row in det.iterrows()]
 print("Detections loaded!")
 
 # load converted video data	
-vid = pd.DataFrame({"path":[],"file":[],"date":[],"hour":[],"min":[],"sec":[],"sec_mid":[]})
+vid = pd.DataFrame({"path":[],"file":[],"date":[],"hour":[],
+"min":[],"sec":[],"sec_mid":[]})
 videos = glob.glob(vid_path + "*.mp4")
 for video in videos:
 	file_name = video.split("/")[-1][0:-4]
@@ -196,19 +198,20 @@ for video in videos:
 	date_re = str(date[2] + "." + date[1] + "." + date[0])
 	time = file_name[18:26].split("_")
 	sec_mid = int(time[0]) * 3600 + int(time[1]) * 60 + int(time[2])
-	vid = vid.append({"path":video,"file":file_name,"date":date_re,"hour":time[0],
-	"min":time[1],"sec":time[2],"sec_mid":sec_mid},ignore_index=True)
+	vid = vid.append({"path":video,"file":file_name,
+	"date":date_re,"hour":time[0],"min":time[1],"sec":time[2],
+	"sec_mid":sec_mid},ignore_index=True)
 vid["sec_mid"] = vid["sec_mid"].astype(int)
 print("Video information loaded!")
 fails = 0
 
-# loop over light barrier detections and find matching (15 minute long) video file 
+# loop over light barrier detections and find matching (15 min) video file 
 print("Matching detections with video files")
 for index, row in det.iterrows():
 	fail = False
-	print(f"  -> searching for detection at {row['hour']}:{row['min']}:{row['sec']} 
+	print(f"  ->searching for detection at {row['hour']}:{row['min']}:{row['sec']} 
 	on the {row['date']}")
-	target_vid = vid[(vid["date"] == row["date"]) & (vid["sec_mid"] <= row["sec_mid"]) 
+	target_vid=vid[(vid["date"]==row["date"]) & (vid["sec_mid"]<=row["sec_mid"]) 
 	& (vid["sec_mid"] >= row["sec_mid"]-15*60)]
 	print(f"     -> video found: {target_vid['file'].to_string().split()[1]}")
 	print("          -> extracting video snip...")
@@ -218,9 +221,9 @@ for index, row in det.iterrows():
 	print(target_file)
 	try:	
 		print(vid_secmid[0])
-		#3 second before light barrier registration = start of snip
+		#3 second before light barrier registration=start of snip
 		t1 = row["sec_mid"] - vid_secmid[0] - 3 
-		#3 second after light barrier registration = end of snip
+		#3 second after light barrier registration=end of snip
 		t2 = row["sec_mid"] - vid_secmid[0] + 3 
 		print(f"{t1} - {t2}")
 		print(target_file[0] + ".mp4")
@@ -228,14 +231,16 @@ for index, row in det.iterrows():
 	except:
 		print("Empty Array")
 	snip_date = "_".join(reversed(row["date"].split(".")))
-	snip_name = "snip_"+snip_date+"_"+str(row["hour"]).zfill(2)+"_"+str(row["min"]).zfill(2)
-	+"_"+str(row["sec"]).zfill(2)+"_"+row["direction"]+".mp4"
+	snip_name = "snip_"+snip_date+"_"+str(row["hour"]).zfill(2)+"_"
+	+str(row["min"]).zfill(2)+"_"+str(row["sec"]).zfill(2)+"_"
+	+row["direction"]+".mp4"
 	
 	#extract 6-second-long snip from video file
 	try:		
-		ffmpeg_extract_subclip(vid_path+target_file,int(t1),int(t2),snip_path+snip_name)
-	# most common cause of failure are detections outside of recording time 
-	# no video for extraction
+		ffmpeg_extract_subclip(vid_path+target_file,int(t1),
+		int(t2),snip_path+snip_name)
+	# most common cause of failure are detections 
+	# outside of recording time -> no video for extraction
 	except:
 		fail = True	
 		fails += 1
