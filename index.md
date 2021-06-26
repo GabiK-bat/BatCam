@@ -150,8 +150,8 @@ import glob
 from subprocess import call
 from time import sleep
 
-source_path = "xxx" #set path of folder with raw video files (h264)
-target_path = "xxx" #set path of folder to save converted video files(mp4)
+source_path = "xxx" #set path of folder with raw videos(h264)
+target_path = "xxx" #set path of folder to save converted videos(mp4)
 
 videos = glob.glob(source_path + "*.h264")
 counter = 1
@@ -184,7 +184,7 @@ snip_path = "xxx" #setpath of folder to save snips
 # load light barrier registrations
 det = pd.read_table(det_path,sep=":| ",engine="python",header=None,
 names=["direction","date","hour", "min","sec"])
-det["sec_mid"] = [row[2] * 3600 + row[3] * 60 + row[4] for index, row in det.iterrows()]
+det["sec_mid"]=[row[2]*3600+row[3]*60+row[4] for index,row in det.iterrows()]
 print("Detections loaded!")
 
 # load converted video data	
@@ -205,11 +205,12 @@ vid["sec_mid"] = vid["sec_mid"].astype(int)
 print("Video information loaded!")
 fails = 0
 
-# loop over light barrier detections and find matching (15 min) video file 
+# loop over light barrier detections and find matching 15 min video 
 print("Matching detections with video files")
 for index, row in det.iterrows():
 	fail = False
-	print(f"  ->searching for detection at {row['hour']}:{row['min']}:{row['sec']} 
+	print(f"  ->searching for detection at 
+	{row['hour']}:{row['min']}:{row['sec']} 
 	on the {row['date']}")
 	target_vid=vid[(vid["date"]==row["date"]) & (vid["sec_mid"]<=row["sec_mid"]) 
 	& (vid["sec_mid"] >= row["sec_mid"]-15*60)]
