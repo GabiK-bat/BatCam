@@ -184,7 +184,9 @@ snip_path = "xxx" #setpath of folder to save snips
 # load light barrier registrations
 det = pd.read_table(det_path,sep=":| ",engine="python",header=None,
 names=["direction","date","hour", "min","sec"])
-det["sec_mid"]=[row[2]*3600+row[3]*60+row[4] for index,row in det.iterrows()]
+det["sec_mid"]=[row[2]*3600+row[3]*60+row[4] for index,
+row in det.iterrows()]
+
 print("Detections loaded!")
 
 # load converted video data	
@@ -212,9 +214,13 @@ for index, row in det.iterrows():
 	print(f"  ->searching for detection at 
 	{row['hour']}:{row['min']}:{row['sec']} 
 	on the {row['date']}")
-	target_vid=vid[(vid["date"]==row["date"]) & (vid["sec_mid"]<=row["sec_mid"]) 
+	target_vid=vid[(vid["date"]==row["date"]) 
+	& (vid["sec_mid"]<=row["sec_mid"]) 
 	& (vid["sec_mid"] >= row["sec_mid"]-15*60)]
-	print(f"     -> video found: {target_vid['file'].to_string().split()[1]}")
+	
+	print(f"     -> video found:
+	{target_vid['file'].to_string().split()[1]}")
+	
 	print("          -> extracting video snip...")
 	print(target_vid["sec_mid"].values)
 	vid_secmid = (target_vid["sec_mid"].values).tolist()
@@ -222,9 +228,9 @@ for index, row in det.iterrows():
 	print(target_file)
 	try:	
 		print(vid_secmid[0])
-		#3 second before light barrier registration=start of snip
+		#3 seco before light barrier registration=start of snip
 		t1 = row["sec_mid"] - vid_secmid[0] - 3 
-		#3 second after light barrier registration=end of snip
+		#3 sec after light barrier registration=end of snip
 		t2 = row["sec_mid"] - vid_secmid[0] + 3 
 		print(f"{t1} - {t2}")
 		print(target_file[0] + ".mp4")
