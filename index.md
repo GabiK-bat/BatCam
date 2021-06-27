@@ -49,12 +49,11 @@ from picamera import PiCamera
 import time
 import RPi.GPIO as GPIO
 
-###################### Define functions #######################
+###################### Define Functions #######################
 #returns seconds passed since midnight
 def sinceMidnight():
 	timeNow = datetime.now()
-	timeZero = timeNow.replace(hour=0,minute=0,second=0,\
-	microsecond=0)
+	timeZero = timeNow.replace(hour=0,minute=0,second=0,microsecond=0)
 	return (timeNow-timeZero).seconds
 
 #converts time (formatted in hh:mm:ss) into seconds
@@ -176,18 +175,17 @@ import pandas as pd
 import glob
 from moviepy.video.io.ffmpeg_tools import ffmpeg_extract_subclip
 
-det_path = "xxx" #set path of "Detections.txt" 
-#file containing the light barrier registrations
+det_path = "xxx" #set path of "Detections.txt" file containing the light barrier registrations
 vid_path = "xxx" #set path of folder with converted video files
 snip_path = "xxx" #setpath of folder to save snips
 
-# load light barrier registrations
+#load light barrier registrations
 det = pd.read_table(det_path,sep=":| ",engine="python",header=None,names=["direction","date","hour", "min","sec"])
 det["sec_mid"]=[row[2]*3600+row[3]*60+row[4] for index,row in det.iterrows()]
 
 print("Detections loaded!")
 
-# load converted video data	
+#load converted video data	
 vid = pd.DataFrame({"path":[],"file":[],"date":[],"hour":[],"min":[],"sec":[],"sec_mid":[]})
 videos = glob.glob(vid_path + "*.mp4")
 for video in videos:
@@ -202,7 +200,7 @@ vid["sec_mid"] = vid["sec_mid"].astype(int)
 print("Video information loaded!")
 fails = 0
 
-# loop over light barrier detections and find matching 15 min video 
+#loop over light barrier detections and find matching 15 min video 
 print("Matching detections with video files")
 for index, row in det.iterrows():
 	fail = False
@@ -218,9 +216,9 @@ for index, row in det.iterrows():
 	print(target_file)
 	try:	
 		print(vid_secmid[0])
-		#3 sec before light barrier registration=start of snip
+		#3 sec before light barrier registration = start of snip
 		t1 = row["sec_mid"] - vid_secmid[0] - 3 
-		#3 sec after light barrier registration=end of snip
+		#3 sec after light barrier registration = end of snip
 		t2 = row["sec_mid"] - vid_secmid[0] + 3 
 		print(f"{t1} - {t2}")
 		print(target_file[0] + ".mp4")
@@ -233,8 +231,7 @@ for index, row in det.iterrows():
 	#extract 6-second-long snip from video file
 	try:		
 		ffmpeg_extract_subclip(vid_path+target_file,int(t1),int(t2),snip_path+snip_name)
-	# most common cause of failure are detections 
-	# outside of recording time -> no video for extraction
+	#most common cause of failure are detections is outside of recording time -> no video for extraction
 	except:
 		fail = True	
 		fails += 1
