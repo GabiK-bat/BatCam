@@ -139,6 +139,40 @@ while True:
 			isRecording = False
 ```
 
+### Saving light barrier registrations
+The infrared light barrier and the video camera have their own real-time clocks with varying drifts, therefore automatically matching the events registered by the two devices can be challenging. To deal with this time shift, the video camera is receiving a signal for each event registered by the light barrier and saves the even in a text file, which can be later used to isolate short video snips for each event from full-night video recordings.
+
+```python
+import time
+import board
+import busio
+import adafruit_ads1x15.ads1115 as ADS
+from adafruit_ads1x15.analog_in import AnalogIn
+from datetime import datetime
+
+i2c = busio.I2C(board.SCL, board.SDA)
+ads = ADS.ADS1115(i2c)
+chanIn = AnalogIn(ads, ADS.P2)
+chanOut = AnalogIn(ads, ADS.P3)
+
+while True:
+	if chanIn.voltage <= 1:
+		print("IN Trigger detected!")
+		now = datetime.now()
+		f = open("Detections.txt","a")
+		f.write("in "+now.strftime("%d.%m.%Y %H:%M:%S")+"\n")
+		f.close
+		time.sleep(0.2)	
+	if chanOut.voltage <= 1:
+		print("OUT Trigger detected!")
+		now = datetime.now()
+		f = open("Detections.txt","a")
+		f.write("out "+now.strftime("%d.%m.%Y %H:%M:%S")+"\n")
+		f.close
+		time.sleep(0.2)	
+	time.sleep(0.025)
+```
+
 ## Video processing
 
 ### Converting h264 video format into mp4
@@ -182,7 +216,6 @@ snip_path = "xxx" #setpath of folder to save snips
 #load light barrier registrations
 det = pd.read_table(det_path,sep=":| ",engine="python",header=None,names=["direction","date","hour", "min","sec"])
 det["sec_mid"]=[row[2]*3600+row[3]*60+row[4] for index,row in det.iterrows()]
-
 print("Detections loaded!")
 
 #load converted video data	
@@ -206,9 +239,7 @@ for index, row in det.iterrows():
 	fail = False
 	print(f"  ->searching for detection at {row['hour']}:{row['min']}:{row['sec']} on the {row['date']}")
 	target_vid=vid[(vid["date"]==row["date"]) & (vid["sec_mid"]<=row["sec_mid"]) & (vid["sec_mid"] >= row["sec_mid"]-15*60)]
-	
 	print(f"     -> video found: {target_vid['file'].to_string().split()[1]}")
-	
 	print("          -> extracting video snip...")
 	print(target_vid["sec_mid"].values)
 	vid_secmid = (target_vid["sec_mid"].values).tolist()
@@ -235,11 +266,9 @@ for index, row in det.iterrows():
 	except:
 		fail = True	
 		fails += 1
-	
 	if fail:
 		print("          -> extraction FAILED!")
 	else:
 		print("          -> extraction complete!")
-	
 print(f"Conversion completed ({fails} detections could not be found)")
 ```
