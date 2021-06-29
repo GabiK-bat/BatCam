@@ -8,7 +8,7 @@ We provide a step-by-step instruction to build, configure and use the camera in 
 
 This practical guide is a supplementary information of the publication: **title.** _Journal_ (authors). https://doi.org/
 
-_*NOTE: The camera presented in this guide has been deployed for more than 35 weeks in various field conditions, therefore it lacks the shiny new look :)_
+_*🦇 NOTE: The camera presented in this guide has been deployed for more than 35 weeks in various field conditions, therefore it lacks the shiny new look :)_
 
 ![image](https://user-images.githubusercontent.com/79314212/123325849-cf6f6100-d538-11eb-9b66-f23d91d5e3c4.png)
 
@@ -51,21 +51,21 @@ We drilled two small holes on the side and one on the back of the plastic box. W
 ![BatCam2](https://user-images.githubusercontent.com/79314212/123788263-17490c00-d8dc-11eb-97c8-ff1cf405eafc.jpg)
 
 ### Step 3 – Camera mount and power switch
-Fix 3D-printed camera mount attachment and main power switch holder with hot glue. (link for 3D print designs)
+Fix 3D-printed camera mount attachment and main power switch holder with hot glue. (<link to 3D print design>)
 
 ![BatCam3](https://user-images.githubusercontent.com/79314212/123788345-2cbe3600-d8dc-11eb-99b3-b74660772f5f.jpg)
 
 ### Step 4 – Power supply and connection to external sensor
 Insert the following parts into the camera casing:
-A – Rasberry Pi power supply, consisting of a 5V car converter with a micro-USB plug attached to it (blue - ground, green - power)
-B – connector to the external sensor e.g. light barrier (blue – shared ground, yellow & white - signal wires)
-C – optional and adjustable power supply for additional LEDs (not used here)
-D – power for the LED driver, direct connection to the car batteries, (blue - ground, green - power)
+- A – Rasberry Pi power supply, consisting of a 5V car converter with a micro-USB plug attached to it (blue - ground, green - power)
+- B – connector to the external sensor e.g. light barrier (blue – shared ground, yellow & white - signal wires)
+- C – optional and adjustable power supply for additional LEDs (not used here)
+- D – power for the LED driver, direct connection to the car batteries, (blue - ground, green - power)
 
 ![BatCam4](https://user-images.githubusercontent.com/79314212/123788389-3ba4e880-d8dc-11eb-8302-eab324aaeb12.png)
 
 ### Step 5 – Infrared camera and SD-card
-Attach the IR camera to the 3D-printed camera holder (link to 3D print design) and the SD card reader extension cable to the Rasberry Pi, then mount it on a 3D printed frame (link to 3D print design) with 2.5 mm spacer screws. This frame reduces mobility of parts and creates space for adding a box of silica gel, which is particularly important when the camera is deployed in humid environments.
+Attach the IR camera to the 3D-printed camera holder (<link to 3D print design>) and the SD card reader extension cable to the Rasberry Pi, then mount it on a 3D printed frame (<link to 3D print design>) with 2.5 mm spacer screws. This frame reduces mobility of parts and creates space for adding a box of silica gel, which is particularly important when the camera is deployed in humid environments.
 
 ![BatCam5](https://user-images.githubusercontent.com/79314212/123788804-ba018a80-d8dc-11eb-8202-647eb5dd91c1.jpg)
 
