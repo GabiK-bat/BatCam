@@ -8,7 +8,7 @@ We provide a step-by-step instruction to build, configure and use the camera in 
 
 This practical guide is a supplementary information of the publication: **title.** _Journal_ (authors). https://doi.org/
 
-_*🦇 NOTE: The camera presented in this guide has been deployed for more than 35 weeks in various field conditions, therefore it lacks the shiny new look :)_
+🦇 _NOTE: The camera presented in this guide has been deployed for more than 35 weeks in various field conditions, therefore it lacks the shiny new look :)_
 
 ![image](https://user-images.githubusercontent.com/79314212/123325849-cf6f6100-d538-11eb-9b66-f23d91d5e3c4.png)
 
@@ -70,9 +70,21 @@ Attach the IR camera to the 3D-printed camera holder (<link to 3D print design>)
 ![BatCam5](https://user-images.githubusercontent.com/79314212/123788804-ba018a80-d8dc-11eb-8202-647eb5dd91c1.jpg)
 
 ### Step 6 –
+
+![BatCam6](https://user-images.githubusercontent.com/79314212/123821129-6e120e00-d8fb-11eb-9247-2a10079acd73.png)
+
 ### Step 7 –
+
+![BatCam7](https://user-images.githubusercontent.com/79314212/123821167-75d1b280-d8fb-11eb-8b53-312b35c97b74.png)
+
 ### Step 8 –
+
+![BatCam8](https://user-images.githubusercontent.com/79314212/123821208-7d915700-d8fb-11eb-9d7a-af7676671b95.jpg)
+
 ### Step 9 –
+
+![BatCam9](https://user-images.githubusercontent.com/79314212/123821234-82eea180-d8fb-11eb-881a-d69e7aebbfca.jpg)
+
 ### Step 10 –
 
 ![image](https://user-images.githubusercontent.com/79314212/123310825-cc6b7500-d526-11eb-8b0b-0c3d7772a325.png)
