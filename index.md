@@ -10,7 +10,7 @@ This practical guide is a supplementary information of the publication: **title.
 
 🦇 _NOTE: The camera presented in this guide has been deployed for more than 35 weeks in various field conditions, therefore it lacks the shiny new look :)_
 
-![image](https://user-images.githubusercontent.com/79314212/123325849-cf6f6100-d538-11eb-9b66-f23d91d5e3c4.png)
+![BatCam0](https://user-images.githubusercontent.com/79314212/123920140-eb826080-d985-11eb-8e82-a33c1319267c.png)
 
 ## Example
 The following video of a Greater mouse-eared bat (_Myotis myotis_) entering a hibernaculum was recorded using the BatCam. The short video snip was isolated from a full-night infrared video recording based on the information the light barrier registered and forwarded to the video camera.
@@ -34,7 +34,7 @@ The following video of a Greater mouse-eared bat (_Myotis myotis_) entering a hi
 An overview of the camera design that is connected to an infrared light barrier:
 
 
-The Printed Circuit Board (PCB) is illustrated in the following graphic:
+The custom-made Printed Circuit Board (PCB) is illustrated in the following graphic:
 
 
 ## Building instructions
@@ -51,41 +51,55 @@ We drilled two small holes on the side and one on the back of the plastic box. W
 ![BatCam2](https://user-images.githubusercontent.com/79314212/123788263-17490c00-d8dc-11eb-97c8-ff1cf405eafc.jpg)
 
 ### Step 3 – Camera mount and power switch
-Fix 3D-printed camera mount attachment and main power switch holder with hot glue. (<link to 3D print design>)
+We fixed the 3D-printed camera mount attachment and main power switch holder with hot glue. (<link to 3D print design>)
 
 ![BatCam3](https://user-images.githubusercontent.com/79314212/123788345-2cbe3600-d8dc-11eb-99b3-b74660772f5f.jpg)
 
 ### Step 4 – Power supply and connection to external sensor
-Insert the following parts into the camera casing:
-- A – Rasberry Pi power supply, consisting of a 5V car converter with a micro-USB plug attached to it (blue - ground, green - power)
-- B – connector to the external sensor e.g. light barrier (blue – shared ground, yellow & white - signal wires)
-- C – optional and adjustable power supply for additional LEDs (not used here)
-- D – power for the LED driver, direct connection to the car batteries, (blue - ground, green - power)
+We inserted the following parts into the camera casing:
+- **A** – Raspberry Pi power supply, consisting of a 5V car converter with a micro-USB plug attached to it (blue - ground, green - power)
+- **B** – connector to the external sensor e.g. light barrier (blue – shared ground, yellow & white - signal wires)
+- **C** – optional and adjustable power supply for additional LEDs (not used here)
+- **D** – power for the LED driver, direct connection to the car batteries, (blue - ground, green - power)
 
 ![BatCam4](https://user-images.githubusercontent.com/79314212/123788389-3ba4e880-d8dc-11eb-8302-eab324aaeb12.png)
 
 ### Step 5 – Infrared camera and SD-card
-Attach the IR camera to the 3D-printed camera holder (<link to 3D print design>) and the SD card reader extension cable to the Rasberry Pi, then mount it on a 3D printed frame (<link to 3D print design>) with 2.5 mm spacer screws. This frame reduces mobility of parts and creates space for adding a box of silica gel, which is particularly important when the camera is deployed in humid environments.
+We attached the IR camera to the 3D-printed camera holder (<link to 3D print design>) and the SD card reader extension cable to the Raspberry Pi, then mount it on a 3D printed frame (<link to 3D print design>) with 2.5 mm spacer screws. This frame reduces mobility of parts and creates space for adding a box of silica gel, which is particularly important when the camera is deployed in humid environments.
 
 ![BatCam5](https://user-images.githubusercontent.com/79314212/123788804-ba018a80-d8dc-11eb-8202-647eb5dd91c1.jpg)
 
-### Step 6 –
+### Step 6 – Raspberry Pi hat
+In the next step, we assembled the following components:
+- **A** – custom-made Raspberry Pi hat (<link to PCB design>)
+- **B** – button
+- **C** – real-time clock (RTC)
+- **D** – analog-digital converter (ADC)
+- **E** – IR-LED light and driver
+- **F** – jumper cable, 2.5V pull-up for “mimicking” a camera trap (specific to a light barrier setup, because it triggers the digital camera by pulling down the signal to ground)
 
 ![BatCam6](https://user-images.githubusercontent.com/79314212/123821129-6e120e00-d8fb-11eb-9247-2a10079acd73.png)
 
-### Step 7 –
+### Step 7 – Raspberry Pi
+We connected the Raspberry Pi hat to the
+- **A**  – Raspberry Pi via the GPIO pins,
+- **B**  –  LED driver to provide power supply (_Step 4, D_), and
+- **C**  – external sensor, i.e. light barrier (_Step 4, B_).
 
-![BatCam7](https://user-images.githubusercontent.com/79314212/123821167-75d1b280-d8fb-11eb-8b53-312b35c97b74.png)
+![BatCam7](https://user-images.githubusercontent.com/79314212/123921757-a3fcd400-d987-11eb-939a-ea90a8eb4f00.png)
 
-### Step 8 –
+### Step 8 – Assembly
+After assembling the Raspberry Pi with the custom-made hat, it should look like as on the image below. We placed it on top of the printed frame holder, placed a box of silica under it and put it all together in the main case.
 
 ![BatCam8](https://user-images.githubusercontent.com/79314212/123821208-7d915700-d8fb-11eb-9d7a-af7676671b95.jpg)
 
-### Step 9 –
+### Step 9 – Wires & extension cables
+We connected the wires (main power switch, LED driver) and the optional cable extensions for HDMI (small screen) and USB (keyboard & mouse). We inserted a 256 GB SD containing the Raspbian operating system and the scripts required for recording and connecting to the external sensors (light barrier).
 
 ![BatCam9](https://user-images.githubusercontent.com/79314212/123821234-82eea180-d8fb-11eb-881a-d69e7aebbfca.jpg)
 
-### Step 10 –
+### Step 10 – Deployment
+After testing the camera, we deployed it in the field. We installed the device on top of a “traditional” camera trap to observe the bats’ reaction to the flash of the camera trap at hibernation sites. We video camera was recording continuously 12 hours per night for 7 days and was powered by two car batteries (105AH 12V). In the field, we modified recording parameters (e.g. resolution, frame per second, recording time) and checked the quality of previous recordings by connecting a 7-inch portable LCD screen with HDMI cable and a Bluetooth keyboard & mouse with USB dongle. The camera is waterproof (except for DC-jacks) and has been extensively used in high humidity environments with dripping water. 
 
 ![image](https://user-images.githubusercontent.com/79314212/123310825-cc6b7500-d526-11eb-8b0b-0c3d7772a325.png)
 
