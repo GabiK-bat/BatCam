@@ -101,8 +101,7 @@ We connected the wires (main power switch, LED driver) and the optional cable ex
 ### Step 10 – Deployment
 After testing the camera, we deployed it in the field. We installed the device on top of a “traditional” camera trap to observe the bats’ reaction to the flash of the camera trap at hibernation sites. The video camera was recording continuously 12 hours per night for 7 days and was powered by two car batteries (105AH 12V). In the field, we modified recording parameters (e.g. resolution, frame per second, recording time) and checked the quality of previous recordings by connecting a 7-inch portable LCD screen with HDMI cable and a Bluetooth keyboard & mouse with USB dongle. Although the camera has not been tested under heavy rain, it has been extensively used in high humidity environments with dripping water, therefore it can be considered waterproof (except for DC-power jacks!).
 
-![image](https://user-images.githubusercontent.com/79314212/123310825-cc6b7500-d526-11eb-8b0b-0c3d7772a325.png)
-
+![BatCam10](https://user-images.githubusercontent.com/79314212/123932262-90566b00-d991-11eb-8a7f-8c4cc3f6c686.jpg)
 
 ## Configuration
 
