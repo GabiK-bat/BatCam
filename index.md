@@ -23,18 +23,21 @@ The following video of a Greater mouse-eared bat (_Myotis myotis_) entering a hi
 
 _COMING SOON..._
 
-| Component                 | Product name                                      | Count | Price per unit | 
-|---------------------------|---------------------------------------------------|-------|----------------|
-| Raspberry Pi              |  Raspberry Pi 3 			                |   1   |  40,00 €       | 
+| Component                   | Use                                               | Count | Price per unit  |
+|-----------------------------|---------------------------------------------------|-------|-----------------|
+| Raspberry Pi 3              |  Core of the system; data processing              |   1   |  40,00 €        |
+| 12V -> 5V Power Converter   |  Car phone charger                                |   1   |  2,00 - 10,00 € |
+| Micro USB plug/cable        |  Connect power converter to Raspberry Pi          |   1   |  0,50 - 5,00 €  |
+| Real Time Clock RTC DS3231  |  Timekeeping while not powered (optional)         |   1   |  4,00 €         |
 
 
 ## Parts list required for connecting to light barrier (or any other sensor with analog output)
 
 _COMING SOON..._
 
-| Component                 | Product name                                      | Count | Price per unit | 
-|---------------------------|---------------------------------------------------|-------|----------------|
-| 		            |  		 			                |   1   |   0,00 €       | 
+| Component                  | Product name                                      | Count | Price per unit  | 
+|----------------------------|---------------------------------------------------|-------|-----------------|
+| 		             |  		 			         |   1   |   0,00 €        | 
 
 ## Schematics
 
