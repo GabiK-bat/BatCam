@@ -23,13 +23,26 @@ The following video of a Greater mouse-eared bat (_Myotis myotis_) entering a hi
 
 _COMING SOON..._
 
-| Component                   | Use                                               | Count | Price per unit  |
-|-----------------------------|---------------------------------------------------|-------|-----------------|
-| Raspberry Pi 3              |  Core of the system; data processing              |   1   |  40,00 €        |
-| 12V -> 5V Power Converter   |  Car phone charger                                |   1   |  2,00 - 10,00 € |
-| Micro USB plug/cable        |  Connect power converter to Raspberry Pi          |   1   |  0,50 - 5,00 €  |
-| Real Time Clock RTC DS3231  |  Timekeeping while not powered (optional)         |   1   |  4,00 €         |
+| Component                   | Use                                               | Count | Price per unit   |
+|-----------------------------|---------------------------------------------------|-------|------------------|
+| Raspberry Pi 3              |  Core of the system; data processing              |   1   |  40,00 €         |
+| 12V to 5V Power Converter   |  Car phone charger                                |   1   |  2,00 - 10,00 €  |
+| Micro USB plug/cable        |  Connect power converter to Raspberry Pi          |   1   |  0,50 - 5,00 €   |
+| DC jack and socket          |  Connecting power/batteries                       |   1   |  1,00 €          |
+| Toggle switch               |  Master switch for power in box                   |   1   |  1,00 €          |
+| Small push button           |  External control if recording script is running  |   1   |  0,20 €          |
+| Wires in different colors   |  Wiring inside of box (used 22 AWG)               |       |  1,00 €          |
+| Car jumper cables           |  Connecting batteries to DC jack                  |  1-2  |  10,00 - 20,00 € |
+| 850nm IR-LED 3W 700mA       |  Illumination                                     |   1   |  1,50 €          |
+| LED-driver 700mA            |  Driver for IR-LED                                |   1   |  2,00 €          |
+| Real Time Clock RTC DS3231  |  Timekeeping while not powered (optional)         |   1   |  4,00 €          |
+| Dessicant                   |  e.g. silica gel (optional)                       |       |  various         |
 
+
+
+## Parts list required for custon PCB
+
+_COMING SOON..._
 
 ## Parts list required for connecting to light barrier (or any other sensor with analog output)
 
