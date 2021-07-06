@@ -2,7 +2,7 @@
 driveId: 1eOBq-KuYQPmx111H_NuEgR9xyAI0cyde/preview
 ---
 
-**BatCam** is an open-source, low-cost, do-it-yourself infrared video camera built with off-the-shelf components. It was designed for automated monitoring of bat activity and behavior at hibernation and roosting sites equipped with infrared light barriers and camera traps. However, it can be easily adapted to a wide variety of field applications, with particular focus on nocturnal animals. Custom recording schedules can be set by the user and the direct connection to the infrared light barrier allows us to convert the continuous video recordings into short clips of each bat passing through the light barrier. Additionally, any other sensors with analog output can serve as a trigger signal for clipping the full-night video recordings. 
+**FlederCam** is an open-source, low-cost, do-it-yourself infrared video camera built with off-the-shelf components. It was designed for automated monitoring of bat activity and behavior at hibernation and roosting sites equipped with infrared light barriers and camera traps. However, it can be easily adapted to a wide variety of field applications, with particular focus on nocturnal animals. Custom recording schedules can be set by the user and the direct connection to the infrared light barrier allows us to convert the continuous video recordings into short clips of each bat passing through the light barrier. Additionally, any other sensors with analog output can serve as a trigger signal for clipping the full-night video recordings. 
 
 We provide a step-by-step instruction to build, configure and use the camera in the field, along with Python codes for video post-processing, making it accessible to anyone with minimal technical and programming skills. 
 
@@ -13,7 +13,7 @@ This practical guide is a supplementary information of the publication: **title.
 ![BatCam0](https://user-images.githubusercontent.com/79314212/123920140-eb826080-d985-11eb-8e82-a33c1319267c.png)
 
 ## Example
-The following video of a Greater mouse-eared bat (_Myotis myotis_) entering a hibernaculum was recorded using the BatCam. The short video snip was isolated from a full-night infrared video recording based on the information the light barrier registered and forwarded to the video camera.
+The following video of a Greater mouse-eared bat (_Myotis myotis_) entering a hibernaculum was recorded using the FlederCam. The short video snip was isolated from a full-night infrared video recording based on the information the light barrier registered and forwarded to the video camera.
 
 {% include googleDrivePlayer.html id=page.driveId %}
 
@@ -194,7 +194,7 @@ while True:
 			nowVideo = datetime.now()
 			GPIO.output((16),GPIO.HIGH)
 			print(f"Start video recording {nowVideo}")
-			camera.start_recording("BatCam_"+
+			camera.start_recording("FlederCam_"+
 			nowVideo.strftime("%Y_%m_%d_%H_%M_%S")+".h264")
 			isRecording = True
 			firstRun = False
@@ -244,7 +244,7 @@ while True:
 ## Video processing
 
 ### Converting h264 video format into mp4
-The Raspberry Pi can easily record videos with different resolution and frame rate, but it saves recordings as .h264 files, which generally hard to view and work with. Using the following Python code, videos recorded with the BatCam can be converted into a widely applicable .mp4 format.
+The Raspberry Pi can easily record videos with different resolution and frame rate, but it saves recordings as .h264 files, which generally hard to view and work with. Using the following Python code, videos recorded with the FlederCam can be converted into a widely applicable .mp4 format.
 
 ```python
 import glob
