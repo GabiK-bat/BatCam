@@ -19,6 +19,8 @@ The following video of a Greater mouse-eared bat (_Myotis myotis_) entering a hi
 
 ## Parts list required for video recording 
 
+_COMING SOON..._
+
 | Component                 | Product name                                      | Count | Price per unit | 
 |---------------------------|---------------------------------------------------|-------|----------------|
 | Raspberry Pi              |  Raspberry Pi 3 			                |   1   |  40,00 €       | 
@@ -26,16 +28,15 @@ The following video of a Greater mouse-eared bat (_Myotis myotis_) entering a hi
 
 ## Parts list required for connecting to light barrier (or any other sensor with analog output)
 
+_COMING SOON..._
+
 | Component                 | Product name                                      | Count | Price per unit | 
 |---------------------------|---------------------------------------------------|-------|----------------|
 | 		            |  		 			                |   1   |   0,00 €       | 
 
 ## Schematics
-An overview of the camera design that is connected to an infrared light barrier:
 
-
-The custom-made Printed Circuit Board (PCB) is illustrated in the following graphic:
-(<link to PCB design>)
+_COMING SOON..._
 
 ## Building instructions
 Here, we present a step-by-step detailed guide with photos showing the main steps of the building process.
