@@ -6,7 +6,9 @@ driveId: 1eOBq-KuYQPmx111H_NuEgR9xyAI0cyde/preview
 
 We provide a step-by-step instruction to build, configure and use the camera in the field, along with Python codes for video post-processing, making it accessible to anyone with minimal technical and programming skills. 
 
-This practical guide is a supplementary information of the publication: **title.** _Journal_ (authors). <https://doi.org/>
+This practical guide is a supplementary information of the publication: G. Krivek, B. Schulze, P. Zs. Poloskei, K. Frankowski, X. Mathgen, A. Douwes, J. van Schaik; **Camera traps with white flash are a minimally invasive method for long-term bat monitoring**. Submitted to _Journal of Applied Ecology_.
+Corresponding author: Gabriella Krivek, krivek.g@gmail.com
+
 
 🦇 _NOTE: The camera presented in this guide has been deployed for more than 35 weeks in various field conditions, therefore it lacks the shiny new look :)_
 
