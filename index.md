@@ -21,8 +21,6 @@ The following video of a Greater mouse-eared bat (_Myotis myotis_) entering a hi
 
 ## Parts list required for video recording 
 
-_COMING SOON..._
-
 | Component                   | Use                                               | Count | Price per unit   |
 |-----------------------------|---------------------------------------------------|-------|------------------|
 | Raspberry Pi 3              |  Core of the system; data processing              |   1   |  40,00 €         |
@@ -40,7 +38,7 @@ _COMING SOON..._
 
 
 
-## Parts list required for custon PCB
+## Parts list required for custom PCB
 
 _COMING SOON..._
 
