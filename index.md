@@ -44,14 +44,14 @@ https://www.thingiverse.com/thing:4896913
 
 | Component                   | Use                                               | Count | Price per unit   |
 |-----------------------------|---------------------------------------------------|-------|------------------|
-| Custom PCB blank            |  for easy soldering of all components             |   1   |  various         |
-| 1x20 female pinheader       |  as conectors for modules (need to be cut)        |   3   |  0,20 €          |
-| 2x4 female pinheader        |  to pull up pins for ADC to imitate a camera      |   1   |  0,50 €          |
-| SMD LEDs                    |  two different colors as indicators               |   2   |  0,20 €          |
-| 10K Ohm SMD Resistor        |  voltage divider                                  |   2   |  0,05 €          |
-| 330 Ohm SMD Resistor        |  pre-resistor for SMD LEDs                        |   2   |  0,05 €          |
-| 2,2K Ohm SMD Resistor       |  pull-down resistors for various purposes         |   8   |  0,05 €          |
-| MOSFET (IRFZ44)             |  toggling alternative IR-LEDs                     |   2   |  1,00 €          |
+| Custom PCB blank            |  For easy soldering of all components             |   1   |  various         |
+| 1x20 female pinheader       |  As conectors for modules (need to be cut)        |   3   |  0,20 €          |
+| 2x4 female pinheader        |  To pull up pins for ADC to imitate a camera      |   1   |  0,50 €          |
+| SMD LEDs                    |  Two different colors as indicators               |   2   |  0,20 €          |
+| 10K Ohm SMD Resistor        |  Voltage divider                                  |   2   |  0,05 €          |
+| 330 Ohm SMD Resistor        |  Pre-resistor for SMD LEDs                        |   2   |  0,05 €          |
+| 2,2K Ohm SMD Resistor       |  Pull-down resistors for various purposes         |   8   |  0,05 €          |
+| MOSFET (IRFZ44)             |  Toggling alternative IR-LEDs                     |   2   |  1,00 €          |
 
 Custom PCB can be made to order at various websites. A link to the design file will follow soon.
 
@@ -60,8 +60,8 @@ Custom PCB can be made to order at various websites. A link to the design file w
 
 | Component                   | Use                                               | Count | Price per unit   |
 |-----------------------------|---------------------------------------------------|-------|------------------|
-| DC jack and socket          |  Connecting power/batteries                       |   2   |  1,00 €          |
-| Analog-Digital-Converter    |  the ADC is used to read analog signals           |   1   |  3,50 €          |
+| DC jack and socket          |  Connecting inputs                                |   2   |  1,00 €          |
+| Analog-Digital-Converter    |  The ADC is used to read analog signals           |   1   |  3,50 €          |
 
 ## Schematics
 
