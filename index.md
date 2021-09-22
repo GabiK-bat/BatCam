@@ -272,8 +272,20 @@ while True:
 
 ## Video processing
 
+The following section has only been tested on linux systems. The Raspberry Pi 3 used for the FlederCam itself can run it, but takes a long time, depending on the quality of the video recording. A faster option is a computer or laptop running something like Ubuntu, or a raspberry Pi 4 set up for this task, should no faster system be available.
+
 ### Converting h264 video format into mp4
-The Raspberry Pi can easily record videos with different resolution and frame rate, but it saves recordings as .h264 files, which generally hard to view and work with. Using the following Python code, videos recorded with the FlederCam can be converted into a widely applicable .mp4 format.
+The Raspberry Pi can easily record videos with different resolution and frame rate, but it saves recordings as .h264 files, which generally hard to view and work with. The following explains how videos recorded with the FlederCam can be converted into a widely applicable .mp4 format. This step requires the installation of MP4Box. On the Raspberry Pi or other linux distributions using APT this can be done by executing the following two lines a terminal.
+
+`sudo apt-get update`
+
+`sudo apt-get -y install gpac`
+
+Individual videos .h264 videos can then be converted using the Terminal.
+
+`MP4Box -add SOURCE_FILE_WITH_PATH TARGET_FILE_WITH_PATH `
+
+The following Python code can be used to convert whole batches of files, simply edit the source_path and target_path to match yours. The required python libraries usually come preinstalled.
 
 ```python
 import glob
@@ -298,7 +310,7 @@ for video in videos:
 ```
 
 ### Creating 6-second-long video snips based on light barrier registrations
-The following Python code allows post-processing the full-night video recordings, creating short video snips for each bat pass registered by the infared light barrier. The length of the video snips can be set by the user (default=3 seconds before and after registered event) and the file names contain the date and time of the event and the direction of the bat pass (in or out).
+The following Python code allows post-processing the full-night video recordings, creating short video snips for each bat pass registered by the infared light barrier. The length of the video snips can be set by the user (default=3 seconds before and after registered event) and the file names contain the date and time of the event and the direction of the bat pass (in or out). Note that this will require the moviepy library, which can be found here https://zulko.github.io/moviepy/install.html.
 
 ```python
 import numpy as np
@@ -321,9 +333,9 @@ videos = glob.glob(vid_path + "*.mp4")
 for video in videos:
 	file_name = video.split("/")[-1][0:-4]
 	print(file_name)
-	date = file_name[7:17].split("_")
+	date = file_name[10:20].split("_")
 	date_re = str(date[2] + "." + date[1] + "." + date[0])
-	time = file_name[18:26].split("_")
+	time = file_name[21:29].split("_")
 	sec_mid = int(time[0]) * 3600 + int(time[1]) * 60 + int(time[2])
 	vid = vid.append({"path":video,"file":file_name,"date":date_re,"hour":time[0],"min":time[1],"sec":time[2],"sec_mid":sec_mid},ignore_index=True)
 vid["sec_mid"] = vid["sec_mid"].astype(int)
