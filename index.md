@@ -123,7 +123,7 @@ After assembling the Raspberry Pi with the custom-made hat, it should look like 
 ![BatCam8](https://user-images.githubusercontent.com/79314212/123821208-7d915700-d8fb-11eb-9d7a-af7676671b95.jpg)
 
 ### Step 9 – Wires & extension cables
-We connected the wires (main power switch, LED driver) and the optional cable extensions for HDMI (portable screen connection) and USB (keyboard & mouse connection). We inserted a 256 GB SD card, containing the Raspbian operating system and the scripts required for recording and connecting to the external sensors (light barrier).
+We connected the wires (main power switch, LED driver) and the optional cable extensions for HDMI (portable screen connection), USB (keyboard & mouse connection) and SD card. We inserted a 256 GB SD card, containing the Raspbian operating system and the scripts required for recording and connecting to the external sensors (light barrier).
 
 ![BatCam9](https://user-images.githubusercontent.com/79314212/123821234-82eea180-d8fb-11eb-881a-d69e7aebbfca.jpg)
 
@@ -133,6 +133,20 @@ After testing the camera, we deployed it in the field. We installed the device o
 ![BatCam10](https://user-images.githubusercontent.com/79314212/123932262-90566b00-d991-11eb-8a7f-8c4cc3f6c686.jpg)
 
 ## Configuration
+
+### Guide on setting up the image for the Raspberry Pi
+The very first step is to burn the latest image of Raspberry Pi OS onto your SD card. You can find information on how to best accomplish that on the official Raspberry Pi website here: https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up/2. If you never operated a Raspberry Pi before, it might also be worth to go back one page and follow the instructions from the beginning. Follow the Guide until your system is successfully set up and running. 
+The next step is to enable the camera interface and the I²C connection, which is used to communicate with the different divices on the board. Enabling I²C is only required when planning on using a real time clock (RTC) for automatic time synchronization, an analog-digital converter (ADC) for reading external signals used to create reference points for snips later, or an additonal I²C OLED screen (which is not included in the current project).
+To enable the interfaces open a terminal and run the following line
+
+`sudo raspi-config`
+
+This will open a configuration utility where you the choose 'Interfacing Options'. This leads you to a new menu where you can the enable camera and I²C. Afterwards go back, finish and reboot your Pi as prompted.
+
+The most critical setup of the system is already complete, but should you choose to include a RTC and/or an ADC the are additional steps.
+-> RTC: the following guide explains in detail how this can be done https://pimylifeup.com/raspberry-pi-rtc/. If you already enabled I²C before, you can directly skip to step 7.
+-> ADC:
+
 
 ### Scheduled video recording
 This operation mode allows configuring the start and end of recording time. To do so, we have set the time period when we DO NOT want to record, using the "day" variable (e.g. day = ("07:00:00","19:00:00") means no recording from 7AM to 7PM).
@@ -147,7 +161,7 @@ import RPi.GPIO as GPIO
 
 ###################### Define Functions #######################
 #returns seconds passed since midnight
-def sinceMidnight():![BatCam1](https://user-images.githubusercontent.com/79314212/123788121-ecf74e80-d8db-11eb-8f1a-7a6ae190ed75.jpg)
+def sinceMidnight():
 
 	timeNow = datetime.now()
 	timeZero = timeNow.replace(hour=0,minute=0,second=0,microsecond=0)
