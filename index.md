@@ -135,17 +135,18 @@ After testing the camera, we deployed it in the field. We installed the device o
 ## Configuration
 
 ### Guide on setting up the image for the Raspberry Pi
-The very first step is to burn the latest image of Raspberry Pi OS onto your SD card. You can find information on how to best accomplish that on the official Raspberry Pi website here: https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up/2. If you never operated a Raspberry Pi before, it might also be worth to go back one page and follow the instructions from the beginning. Follow the Guide until your system is successfully set up and running. 
+The very first step is to burn the latest image of Raspberry Pi OS onto your SD card. You can find information on how to best accomplish that on the official Raspberry Pi website here: https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up/2. If you never used a Raspberry Pi before, it might also be helpful to go back one page and follow the instructions from the beginning. Follow the Guide until your system is successfully set up and running. 
 The next step is to enable the camera interface and the I²C connection, which is used to communicate with the different divices on the board. Enabling I²C is only required when planning on using a real time clock (RTC) for automatic time synchronization, an analog-digital converter (ADC) for reading external signals used to create reference points for snips later, or an additonal I²C OLED screen (which is not included in the current project).
 To enable the interfaces open a terminal and run the following line
 
 `sudo raspi-config`
 
-This will open a configuration utility where you the choose 'Interfacing Options'. This leads you to a new menu where you can the enable camera and I²C. Afterwards go back, finish and reboot your Pi as prompted.
+This will open a configuration utility where you then choose 'Interfacing Options', leading you to a new menu, where you can enable camera and I²C. Afterwards go back, finish and reboot your Pi as prompted.
 
 The most critical setup of the system is already complete, but should you choose to include a RTC and/or an ADC the are additional steps.
 -> RTC: the following guide explains in detail how this can be done https://pimylifeup.com/raspberry-pi-rtc/. If you already enabled I²C before, you can directly skip to step 7.
--> ADC:
+
+-> ADC: download the required python library from Adafruit like explained here https://learn.adafruit.com/raspberry-pi-analog-to-digital-converters/ads1015-slash-ads1115. It is also possible to download the files of the library directly and place them in the same folder as the script for logging external inputs, so that python can find them when loading the required libraries for it.
 
 
 ### Scheduled video recording
