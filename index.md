@@ -47,12 +47,12 @@ The designs for the 3D-printed parts used can be found on [Thingiverse](https://
 | 1x20 female pinheader       |  As conectors for modules (need to be cut)        |   3   |  0,20 €          |
 | 2x4 female pinheader        |  To pull up pins for ADC to imitate a camera      |   1   |  0,50 €          |
 | SMD LEDs                    |  Two different colors as indicators               |   2   |  0,20 €          |
-| 10K Ohm SMD Resistor        |  Voltage divider                                  |   2   |  0,05 €          |
-| 330 Ohm SMD Resistor        |  Pre-resistor for SMD LEDs                        |   2   |  0,05 €          |
-| 2,2K Ohm SMD Resistor       |  Pull-down resistors for various purposes         |   8   |  0,05 €          |
+| 10K Ohm 0603 SMD Resistor   |  Voltage divider                                  |   2   |  0,05 €          |
+| 330 Ohm 0603 SMD Resistor   |  Pre-resistor for SMD LEDs                        |   2   |  0,05 €          |
+| 2,2K Ohm 0603 SMD Resistor  |  Pull-down resistors for various purposes         |   8   |  0,05 €          |
 | MOSFET (IRFZ44)             |  Toggling alternative IR-LEDs                     |   2   |  1,00 €          |
 
-Custom PCB can be made to order at various websites. A link to the design file will follow soon.
+Custom PCB can be made to order at various websites. The design can be found here at [OSHWLab](https://oshwlab.com/BrianSchulze/batcamv1_copy_copy). This also includes an electrical wiring diagram that can be used to recreate the setup without the PCB. Should you choose to build the circuit on a bread- or a dotted veroboard, the non-SMD version of the parts above are required.
 
 
 ## Parts list required for connecting to light barrier (or any other sensor with analog output)
