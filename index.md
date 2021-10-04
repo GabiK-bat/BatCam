@@ -79,7 +79,7 @@ We drilled two small holes on the side and one on the back of the plastic box. W
 ![BatCam2](https://user-images.githubusercontent.com/79314212/123788263-17490c00-d8dc-11eb-97c8-ff1cf405eafc.jpg)
 
 ### Step 3 – Camera mount and power switch
-We fixed the 3D-printed camera mount attachment and main power switch holder with hot glue [Thingiverse](https://www.thingiverse.com/thing:4896913).
+We fixed the 3D-printed camera mount attachment and main power switch holder with hot glue ([3D design](https://www.thingiverse.com/thing:4896913)).
 
 ![BatCam3](https://user-images.githubusercontent.com/79314212/123788345-2cbe3600-d8dc-11eb-99b3-b74660772f5f.jpg)
 
@@ -93,7 +93,7 @@ We inserted the following parts into the camera casing:
 ![BatCam4](https://user-images.githubusercontent.com/79314212/123788389-3ba4e880-d8dc-11eb-8302-eab324aaeb12.png)
 
 ### Step 5 – Infrared camera and SD-card
-We attached the IR camera to the 3D-printed camera holder and the SD card reader extension cable to the Raspberry Pi, then mounted it on a 3D-printed frame [Thingiverse](https://www.thingiverse.com/thing:4896913) with 2.5 mm spacer screws. This frame reduces mobility of parts and creates space for adding a box of silica gel, which is particularly important when the camera is deployed in humid environments.
+We attached the IR camera to the 3D-printed camera holder and the SD card reader extension cable to the Raspberry Pi, then mounted it on a 3D-printed frame ([3D design](https://www.thingiverse.com/thing:4896913)) with 2.5 mm spacer screws. This frame reduces mobility of parts and creates space for adding a box of silica gel, which is particularly important when the camera is deployed in humid environments.
 
 ![BatCam5](https://user-images.githubusercontent.com/79314212/123788804-ba018a80-d8dc-11eb-8202-647eb5dd91c1.jpg)
 
