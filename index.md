@@ -36,8 +36,7 @@ The following video of a Greater mouse-eared bat (_Myotis myotis_) entering a hi
 | Real Time Clock RTC DS3231  |  Timekeeping while not powered (optional)         |   1   |  4,00 €          |
 | Dessicant                   |  e.g. silica gel (optional)                       |       |  various         |
 
-The designs for the 3D-printed parts used can be found here:
-https://www.thingiverse.com/thing:4896913
+The designs for the 3D-printed parts used can be found on [Thingiverse](https://www.thingiverse.com/thing:4896913).
 
 
 ## Parts list required for custom PCB
@@ -80,7 +79,7 @@ We drilled two small holes on the side and one on the back of the plastic box. W
 ![BatCam2](https://user-images.githubusercontent.com/79314212/123788263-17490c00-d8dc-11eb-97c8-ff1cf405eafc.jpg)
 
 ### Step 3 – Camera mount and power switch
-We fixed the 3D-printed camera mount attachment and main power switch holder with hot glue. (https://www.thingiverse.com/thing:4896913)
+We fixed the 3D-printed camera mount attachment and main power switch holder with hot glue [Thingiverse](https://www.thingiverse.com/thing:4896913).
 
 ![BatCam3](https://user-images.githubusercontent.com/79314212/123788345-2cbe3600-d8dc-11eb-99b3-b74660772f5f.jpg)
 
@@ -94,7 +93,7 @@ We inserted the following parts into the camera casing:
 ![BatCam4](https://user-images.githubusercontent.com/79314212/123788389-3ba4e880-d8dc-11eb-8302-eab324aaeb12.png)
 
 ### Step 5 – Infrared camera and SD-card
-We attached the IR camera to the 3D-printed camera holder and the SD card reader extension cable to the Raspberry Pi, then mounted it on a 3D-printed frame (https://www.thingiverse.com/thing:4896913) with 2.5 mm spacer screws. This frame reduces mobility of parts and creates space for adding a box of silica gel, which is particularly important when the camera is deployed in humid environments.
+We attached the IR camera to the 3D-printed camera holder and the SD card reader extension cable to the Raspberry Pi, then mounted it on a 3D-printed frame [Thingiverse](https://www.thingiverse.com/thing:4896913) with 2.5 mm spacer screws. This frame reduces mobility of parts and creates space for adding a box of silica gel, which is particularly important when the camera is deployed in humid environments.
 
 ![BatCam5](https://user-images.githubusercontent.com/79314212/123788804-ba018a80-d8dc-11eb-8202-647eb5dd91c1.jpg)
 
@@ -135,18 +134,19 @@ After testing the camera, we deployed it in the field. We installed the device o
 ## Configuration
 
 ### Guide on setting up the image for the Raspberry Pi
-The very first step is to burn the latest image of Raspberry Pi OS onto your SD card. You can find information on how to best accomplish that on the official Raspberry Pi website here: https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up/2. If you never used a Raspberry Pi before, it might also be helpful to go back one page and follow the instructions from the beginning. Follow the Guide until your system is successfully set up and running. 
+The very first step is to burn the latest image of the Raspberry Pi OS on an SD card. You can find information on how to best accomplish that on the official Raspberry Pi website here: (https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up/2). If you never used a Raspberry Pi before, it is recommended to follow the instructions from the beginning of the guide. Follow the guide until your system is successfully set up and running. 
 The next step is to enable the camera interface and the I²C connection, which is used to communicate with the different divices on the board. Enabling I²C is only required when planning on using a real time clock (RTC) for automatic time synchronization, an analog-digital converter (ADC) for reading external signals used to create reference points for snips later, or an additonal I²C OLED screen (which is not included in the current project).
 To enable the interfaces open a terminal and run the following line
 
 `sudo raspi-config`
 
-This will open a configuration utility where you then choose 'Interfacing Options', leading you to a new menu, where you can enable camera and I²C. Afterwards go back, finish and reboot your Pi as prompted.
+This will open a configuration utility where you can choose 'Interfacing Options', leading you to a new menu, where you can enable camera and I²C. Afterwards go back, finish and reboot your Pi as prompted.
 
 The most critical setup of the system is already complete, but should you choose to include a RTC and/or an ADC the are additional steps.
--> RTC: the following guide explains in detail how this can be done https://pimylifeup.com/raspberry-pi-rtc/. If you already enabled I²C before, you can directly skip to step 7.
 
--> ADC: download the required python library from Adafruit like explained here https://learn.adafruit.com/raspberry-pi-analog-to-digital-converters/ads1015-slash-ads1115. It is also possible to download the files of the library directly and place them in the same folder as the script for logging external inputs, so that python can find them when loading the required libraries for it.
+-> RTC: the following guide explains in detail how this can be done (https://pimylifeup.com/raspberry-pi-rtc/). If you already enabled I²C before, you can directly skip to step 7.
+
+-> ADC: download the required python library from Adafruit like explained here (https://learn.adafruit.com/raspberry-pi-analog-to-digital-converters/ads1015-slash-ads1115). It is also possible to download the files of the library directly and place them in the same folder as the script for logging external inputs, so that python can find them when loading the required libraries for it.
 
 
 ### Scheduled video recording
