@@ -134,7 +134,7 @@ After testing the camera, we deployed it in the field. We installed the device o
 ## Configuration
 
 ### Guide on setting up the image for the Raspberry Pi
-The very first step is to burn the latest image of the Raspberry Pi OS on an SD card. You can find information on how to best accomplish that on the official Raspberry Pi website here: (https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up/2). If you never used a Raspberry Pi before, it is recommended to follow the instructions from the beginning of the guide. Follow the guide until your system is successfully set up and running. 
+The very first step is to burn the latest image of the Raspberry Pi OS on an SD card. You can find information on how to best accomplish that on the official [Raspberry Pi website](https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up/2). If you never used a Raspberry Pi before, it is recommended to follow the instructions from the beginning of the guide. Follow the guide until your system is successfully set up and running. 
 The next step is to enable the camera interface and the I²C connection, which is used to communicate with the different divices on the board. Enabling I²C is only required when planning on using a real time clock (RTC) for automatic time synchronization, an analog-digital converter (ADC) for reading external signals used to create reference points for snips later, or an additonal I²C OLED screen (which is not included in the current project).
 To enable the interfaces open a terminal and run the following line
 
@@ -144,9 +144,9 @@ This will open a configuration utility where you can choose 'Interfacing Options
 
 The most critical setup of the system is already complete, but should you choose to include a RTC and/or an ADC the are additional steps.
 
--> RTC: the following guide explains in detail how this can be done (https://pimylifeup.com/raspberry-pi-rtc/). If you already enabled I²C before, you can directly skip to step 7.
+-> RTC: the following [guide](https://pimylifeup.com/raspberry-pi-rtc/) explains in detail how this can be done. If you already enabled I²C before, you can directly skip to step 7.
 
--> ADC: download the required python library from Adafruit like explained here (https://learn.adafruit.com/raspberry-pi-analog-to-digital-converters/ads1015-slash-ads1115). It is also possible to download the files of the library directly and place them in the same folder as the script for logging external inputs, so that python can find them when loading the required libraries for it.
+-> ADC: download the required python library from Adafruit like explained [here](https://learn.adafruit.com/raspberry-pi-analog-to-digital-converters/ads1015-slash-ads1115). It is also possible to download the files of the library directly and place them in the same folder as the script for logging external inputs, so that python can find them when loading the required libraries for it.
 
 
 ### Scheduled video recording
@@ -325,7 +325,7 @@ for video in videos:
 ```
 
 ### Creating 6-second-long video snips based on light barrier registrations
-The following Python code allows post-processing the full-night video recordings, creating short video snips for each bat pass registered by the infared light barrier. The length of the video snips can be set by the user (default=3 seconds before and after registered event) and the file names contain the date and time of the event and the direction of the bat pass (in or out). Note that this will require the moviepy library, which can be found here https://zulko.github.io/moviepy/install.html.
+The following Python code allows post-processing the full-night video recordings, creating short video snips for each bat pass registered by the infared light barrier. The length of the video snips can be set by the user (default=3 seconds before and after registered event) and the file names contain the date and time of the event and the direction of the bat pass (in or out). Note that this will require the moviepy library, which can be found [here](https://zulko.github.io/moviepy/install.html).
 
 ```python
 import numpy as np
