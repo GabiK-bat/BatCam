@@ -6,7 +6,7 @@ driveId: 1eOBq-KuYQPmx111H_NuEgR9xyAI0cyde/preview
 
 We provide a step-by-step instruction to build, configure and use the camera in the field, along with Python codes for video post-processing, making it accessible to anyone with minimal technical and programming skills. 
 
-This practical guide is a supplementary information of the publication: G. Krivek, B. Schulze, P. Zs. Poloskei, K. Frankowski, X. Mathgen, A. Douwes, J. van Schaik; **Camera traps with white flash are a minimally invasive method for long-term bat monitoring**. Submitted to _Remote Sensing in Ecology and Conservation_.
+G. Krivek, B. Schulze, P. Zs. Poloskei, K. Frankowski, X. Mathgen, A. Douwes, J. van Schaik (2021) **Camera traps with white flash are a minimally invasive method for long-term bat monitoring**, [link](https://doi.org/10.1002/rse2.243), *Remote Sensing in Ecology and Conservation*.
 Corresponding author: Gabriella Krivek, krivek.g@gmail.com
 
 
