@@ -1,5 +1,5 @@
 ---
-driveId: 1eOBq-KuYQPmx111H_NuEgR9xyAI0cyde/preview
+driveId: 1P3S7qkTtd1HJChzELdYP6w8z0U-yhxF-/preview
 ---
 
 **FlederCam** is an open-source, low-cost, do-it-yourself infrared video camera built with off-the-shelf components. It was designed for automated monitoring of bat activity and behavior at hibernation and roosting sites equipped with infrared light barriers and camera traps. However, it can be easily adapted to a wide variety of field applications, with particular focus on nocturnal animals. Custom recording schedules can be set by the user and the direct connection to the infrared light barrier allows us to convert the continuous video recordings into short clips of each bat passing through the light barrier. Additionally, any other sensors with analog output can serve as a trigger signal for clipping the full-night video recordings. 
